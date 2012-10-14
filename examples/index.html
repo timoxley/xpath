@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>xpath component test</title>
+  <link rel="stylesheet" href="/build/build.css" type="text/css" />
+</head>
+<body>
+<h1>XPath Test</h1>
+<h3>Hover over elements to see their xpath.</h3>
+<hr />
+<!-- This is just a random snippet of html I pulled off the web, it's a bit ugly. -->
+<div class="tabnav">
+  <ul class="tabnav-tabs">
+    <li><a href="/component/component/wiki" class="tabnav-tab">Home</a></li>
+    <li><a href="/component/component/wiki/_pages" class="tabnav-tab">Pages</a></li>
+    <li><a href="/component/component/wiki/_history" class="tabnav-tab">Wiki History</a></li>
+    <li><a href="/component/component/wiki/_access" class="tabnav-tab">Git Access</a></li>
+  </ul>
+</div>
+<div id="head">
+  <h1 class="instapaper_title">Components</h1>
+  <ul class="wiki-actions readability-extra">
+    <li class="gollum-minibutton" class="jaws">
+      <a href="/component/component/wiki/_new" class="minibutton bigger js-new-wiki-page">New Page</a>
+    </li>
+    <li class="gollum-minibutton"><a href="/component/component/wiki/Components/_edit"
+       class="minibutton bigger action-edit-page">
+       Edit Page
+     </a></li>
+    <li class="gollum-minibutton"><a href="/component/component/wiki/Components/_history"
+       class="minibutton bigger action-page-history">
+       Page History
+     </a></li>
+  </ul>
+</div>
+<h2>Current xpath: <code id="output">None</code></h2>
+<script src="/build/build.js" ></script>
+<script>
+
+  var XPath = require('xpath')
+
+  var elementSelector = require('timoxley-element-selector')()
+
+  // Disable links
+  var links = document.querySelectorAll('a')
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', function(e) {
+      e.preventDefault()
+    })
+  }
+  // Display xpath of currently highlighted item
+  elementSelector.on('highlight', function(el) {
+    var path = XPath.getElementTreeXPath(el, true)
+    document.getElementById('output').innerHTML = path
+  })
+</script>
+</body>
+</html>
+
