@@ -36,7 +36,16 @@ element indices are stored in the xpath.
 
 ```
 
+## API
 
+- getElementXPath
+- getElementTreeXPath
+- getElementCSSPath
+- cssToXPath
+- getElementsBySelector
+- getElementsByXPath
+- getRuleMatchingElements
+- getElementCSSSelector
 
 ## Credit
 
