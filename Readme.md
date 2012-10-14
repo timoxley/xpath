@@ -11,16 +11,12 @@ $ component install timoxley/xpath
 
 ## Example
 
-```js
-var xpath = require('xpath')
-xPath.getElementTreeXPath(document.getElementById('someItem')) // => "/html[1]/body[1]/div[2]/ul[1]/li[2]"
-
-```
-
+Given this html:
 ```html
 <html>
 <body>
-  <div></div>
+  <div>
+  </div>
   <div>
     <ul>
       <li></li>
@@ -30,6 +26,17 @@ xPath.getElementTreeXPath(document.getElementById('someItem')) // => "/html[1]/b
 </body>
 </html>
 ```
+
+Get the xpath of `#someItem`;
+```js
+var xpath = require('xpath')
+xPath.getElementTreeXPath(document.getElementById('someItem'), true) // => "/html[1]/body[1]/div[2]/ul[1]/li[2]"
+// Note: boolean second parameter to `getElementTreeXPath` ensures
+element indices are stored in the xpath.
+
+```
+
+
 
 ## Credit
 
